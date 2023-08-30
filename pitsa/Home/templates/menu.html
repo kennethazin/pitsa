@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+<style>
+  /* Add a border to the input field within the form.name div */
+  .row.mb-4 input {
+    border: 1px solid black;
+  }
+</style>
+
+<div class='container-sm' >
+  <div class="text-center mt-4">
+
+  <h2>Create your pizza</h2>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+      <div class="container1 py-5 h-8 text-black">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-8 col-xl-6">
+            <div class="card border-top border-bottom border-0 bg-light" style="border-color: #FFFFFF!important;">
+              <div class="card-body p-5 pl-3">    
+    <div class="row mb-3">
+      <h4>Toppings</h4>
+
+      <div class="col-md-3">
+        <label for="{{ form.size.id_for_label }}">Size</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.size }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="{{ form.crust.id_for_label }}">Crust</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.crust }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="{{ form.sauce.id_for_label }}">Sauce</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.sauce }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="{{ form.cheese.id_for_label }}">Cheese</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.cheese }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="{{ form.selected_topping.id_for_label }}">Selected Topping</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.selected_topping }}
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <label>Additional Toppings</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.additional_toppings }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="{{ form.quantity.id_for_label }}">Quantity</label>
+      </div>
+      <div class="col-md-9">
+        {{ form.quantity }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <h4>Contact</h4>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.name.id_for_label }}">Name</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.name }}
+          </div>
+        </div>
+    
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.email.id_for_label }}" placeholder="gang">Email</label>
+          </div>
+          <div class="col-md-9">
+            <input type="email" name="{{ form.email.name }}" placeholder="johndoe@example.com">
+          </div>
+        </div>
+    
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.phone_number }}
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-6">
+        <h4>Address</h4>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.street.id_for_label }}">Street</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.street }}
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.door_no.id_for_label }}">Door Number</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.door_no }}
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.county.id_for_label }}">County</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.county }}
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.street.id_for_label }}">Country</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.country }}
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.eircode.id_for_label }}">Eircode</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.eircode }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center"</div>
+
+    <button type="submit" class="btn btn-primary mb-5">Order</button>
+    </div>
+  </form></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+  /* Add a border to the input field within the form.name div */
+  .row input {
+    border: 1px solid black;
+  }
+</style>
+
+<div class='container-sm' >
+  <div class="text-center mt-4">
+
+  <h2>Order Summary</h2>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+      <div class="container1 py-5 h-8">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-8 col-xl-6">
+            <div class="card border-top border-bottom border-0" style="border-color: #FFFFFF !important;">
+              <div class="card-body p-5">    
+                <div class="row">
+                  <div class="col mb-3">
+                    <p class="fw-medium text-muted mb-1">Date</p>
+                    <p class="small text-muted text-black mb-1">{{current_time}}</p>
+                  </div>
+                  <div class="col mb-3">
+                    <p class="fw-medium text-muted mb-1">Order ID</p>
+                    <p class="small text-muted text-black mb-1">{{order_id}}</p>
+
+                  </div>
+
+                </div>
+    
+                <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
+                  <div class="row">
+                    <div class="col-md-8 col-lg-9 text-black ">
+                      <p><small><strong>Size:</strong></small> <small>{{size}}</small></p>
+                      <p><small><strong>Cheese:</strong></small> <small>{{cheese}}</small></p>
+                      <p><small><strong>Crust:</strong></small> <small>{{crust}}</small></p>
+                      <p><small><strong>Selected Topping:</strong></small> <small>{{selected_topping}}</small></p>
+                      
+                      {% if additional_toppings %}
+                      <p><small><strong>Extra:</strong></small></p>
+                      <ul>
+                        {% for topping in additional_toppings %}
+                        <li><small>{{ topping }}</small></li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+                                      </div>
+                  </div>
+
+                </div>
+
+                <div class="row my-4">
+                  <p class="text-muted">Total:</p>
+
+                    <p class="lead fw-bold mb-0 display-5" style="color: #f37a27;">€{{total_price}} </p>
+
+                </div>
+      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class='container-sm' >
+        <div class="text-center mt-4">
+      
+        <h2>Payment</h2>
+        </div>
+        <form method="post">
+          {% csrf_token %}
+            <div class="container1 py-5 h-8 text-black">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                  <div class="card border-top border-bottom border-0 bg-light" style="border-color: #FFFFFF!important;">
+                    <div class="card-body p-5 pl-3">    
+             <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="mb-4">
+        <h4>Enter Card Details</h4>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.card_number.id_for_label }}">Card Number</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.card_number }}
+          </div>
+        </div>
+    
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.expiry_date.id_for_label }}">Expiry Date</label>
+          </div>
+          <div class="col-md-9">
+            <input name="{{ form.expiry_date.name }}" placeholder="02/24">
+          </div>
+        </div>
+    
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.cvv.id_for_label }}">CVV</label>
+          </div>
+          <div class="col-md-9">
+            <input name="{{ form.cvv.name }}" placeholder="123">
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.card_name.id_for_label }}">Card Name</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.card_name }}
+          </div>
+        </div>
+    
+      </div>
+    
+      <div class="col-md-6">
+        <div class="mb-4">
+          <h4>Contact</h4>
+          </div>        
+          <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.name.id_for_label }}">Name</label>
+          </div>
+          <div class="col-md-9">
+            {{ form.name }}
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+          </div>
+          <div class="col-md-9">
+            <input name="{{ form.cvv.email }}" placeholder="example@example.com">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 mt-1 mb-5 text-center"</div>
+
+        <button type="submit" href='confirmation' class="btn btn-primary">Confirm payment</button>
+      </div>
+  </form></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+
+
+
+
+      
+
+</div>
+{% endblock %}
